@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoDrip - Daily Useful Information</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Navbar */
+nav {
+    background: #0d6efd;
+    padding: 15px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav h2 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+/* Header */
+header {
+    padding: 40px 20px;
+    text-align: center;
+    background: white;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Categories */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.category {
+    background: #0d6efd;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Articles */
+.articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <h2>InfoDrip</h2>
+    <ul>
+        <li>Home</li>
+        <li>Technology</li>
+        <li>Finance</li>
+        <li>Travel</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header>
+    <h1>Welcome to InfoDrip</h1>
+    <p>Your daily source of useful tips, guides and information</p>
+</header>
+
+<!-- Categories -->
+<div class="categories">
+    <div class="category">Technology</div>
+    <div class="category">Finance</div>
+    <div class="category">Health</div>
+    <div class="category">Travel</div>
+    <div class="category">Education</div>
+</div>
+
+<!-- Articles -->
+<div class="articles">
+
+    <div class="card">
+        <h3>How to Buy Domain Smartly</h3>
+        <p>Learn how to avoid high renewal costs and choose the best domain name.</p>
+    </div>
+
+    <div class="card">
+        <h3>GitHub Pages Setup Guide</h3>
+        <p>Step-by-step guide to host your website for free using GitHub.</p>
+    </div>
+
+    <div class="card">
+        <h3>Best Budget Travel Tips</h3>
+        <p>Save money while travelling with these simple and effective tips.</p>
+    </div>
+
+    <div class="card">
+        <h3>How to Start Online Income</h3>
+        <p>Beginner-friendly ideas to start earning money online.</p>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 InfoDrip.in | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
