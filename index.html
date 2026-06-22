@@ -1,155 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InfoDrip - Daily Useful Information</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    color: #333;
-}
-
-/* Navbar */
-nav {
-    background: #0d6efd;
-    padding: 15px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-}
-
-nav h2 {
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li {
-    cursor: pointer;
-}
-
-/* Header */
-header {
-    padding: 40px 20px;
-    text-align: center;
-    background: white;
-}
-
-header h1 {
-    margin-bottom: 10px;
-}
-
-/* Categories */
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-}
-
-.category {
-    background: #0d6efd;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-}
-
-/* Articles */
-.articles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.card h3 {
-    margin-top: 0;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #222;
-    color: white;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-<!-- Navbar -->
-<nav>
-    <h2>InfoDrip</h2>
-    <ul>
-        <li>Home</li>
-        <li>Technology</li>
-        <li>Finance</li>
-        <li>Travel</li>
-        <li>Contact</li>
-    </ul>
-</nav>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <!-- NexusAI Home Action Link -->
+                <div class="logo" id="homeBtn" title="Go to Dashboard Home">
+                    <i class="fa-solid fa-cube text-primary"></i>
+                    <span>NexusAI</span>
+                </div>
+                <!-- New Chat Button -->
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fa-solid fa-plus"></i> New Chat
+                </button>
+            </div>
+            
+            <div class="chat-history" id="chatHistory">
+                <div class="history-section-title">Recent Chats</div>
+                <div class="history-item active">
+                    <i class="fa-regular fa-message"></i>
+                    <span class="history-text">Production optimization ideas</span>
+                </div>
+            </div>
 
-<!-- Header -->
-<header>
-    <h1>Welcome to InfoDrip</h1>
-    <p>Your daily source of useful tips, guides and information</p>
-</header>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">K</div>
+                    <div class="user-info">
+                        <span class="user-name">Kamal</span>
+                        <span class="user-status">Online</span>
+                    </div>
+                </div>
+                <!-- Settings Trigger Button -->
+                <button class="icon-btn" id="settingsBtn" title="Settings"><i class="fa-solid fa-gear"></i></button>
+            </div>
+        </aside>
 
-<!-- Categories -->
-<div class="categories">
-    <div class="category">Technology</div>
-    <div class="category">Finance</div>
-    <div class="category">Health</div>
-    <div class="category">Travel</div>
-    <div class="category">Education</div>
-</div>
+        <!-- MAIN CHAT AREA -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <button class="toggle-sidebar-btn" id="toggleSidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="current-model">
+                    <span class="model-badge"><i class="fa-solid fa-bolt"></i> GPT-4o / Claude 3.5</span>
+                </div>
+                <div class="navbar-actions">
+                    <button class="icon-btn" id="clearChat" title="Clear Chat"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+            </header>
 
-<!-- Articles -->
-<div class="articles">
+            <!-- Chat Messages Container -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome Screen -->
+                <div class="welcome-container" id="welcomeContainer">
+                    <div class="welcome-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h2>How can I assist you today?</h2>
+                    <p>Ask a question, analyze data, or optimize your workflow.</p>
+                    
+                    <div class="suggested-prompts">
+                        <div class="prompt-card" onclick="useSuggestedPrompt('Draft a root cause analysis template.')">
+                            <h4>Root Cause Analysis</h4>
+                            <p>Draft a structured standard template.</p>
+                        </div>
+                        <div class="prompt-card" onclick="useSuggestedPrompt('Explain industrial Poka-Yoke framework.')">
+                            <h4>Process Safety</h4>
+                            <p>Explain Poka-Yoke error-proofing rules.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="card">
-        <h3>How to Buy Domain Smartly</h3>
-        <p>Learn how to avoid high renewal costs and choose the best domain name.</p>
+            <!-- Input Area -->
+            <footer class="input-container">
+                <div class="input-wrapper">
+                    <!-- Insert Media Button Anchor Wrap -->
+                    <div class="media-container">
+                        <button class="action-btn" id="mediaBtn" title="Insert media"><i class="fa-solid fa-paperclip"></i></button>
+                        <!-- NEXT STEP MEDIA DROPDOWN PANEL -->
+                        <div class="dropdown-menu" id="mediaMenu">
+                            <div class="dropdown-header">Upload Media Type</div>
+                            <div class="dropdown-item" onclick="handleMediaSelect('Document')"><i class="fa-regular fa-file-pdf"></i> Upload Document (.pdf, .txt)</div>
+                            <div class="dropdown-item" onclick="handleMediaSelect('Image')"><i class="fa-regular fa-image"></i> Upload Image (.png, .jpg)</div>
+                            <div class="dropdown-item" onclick="handleMediaSelect('Dataset')"><i class="fa-solid fa-table"></i> Structured Data (.csv, .xlsx)</div>
+                        </div>
+                    </div>
+                    
+                    <textarea id="userInput" rows="1" placeholder="Type your message here..." oninput="autoResizeTextArea(this)"></textarea>
+                    
+                    <div class="input-actions">
+                        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-footer-text">
+                    AI response placeholders. Ready for your custom backend integration.
+                </div>
+            </footer>
+        </main>
     </div>
 
-    <div class="card">
-        <h3>GitHub Pages Setup Guide</h3>
-        <p>Step-by-step guide to host your website for free using GitHub.</p>
+    <!-- MODAL OVERLAY PANELS FOR EXTENDED FLOW OPTIONS -->
+
+    <!-- Modal 1: Settings Panel -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>System Settings Configuration</h3>
+                <button class="close-modal-btn" onclick="closeModal('settingsModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label class="setting-label">Select Model Context</label>
+                <select class="form-control">
+                    <option>GPT-4o (Reasoning & Code Optimization)</option>
+                    <option>Claude 3.5 Sonnet (Advanced Writing & Strategy)</option>
+                    <option>Local Custom Llama Model Engine</option>
+                </select>
+
+                <label class="setting-label">Creativity Temperature</label>
+                <input type="range" class="form-range" min="0" max="1" step="0.1" value="0.7">
+
+                <label class="setting-label">System Instructions Template</label>
+                <textarea class="form-control" rows="3" placeholder="You are an expert platform architect..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary-btn" onclick="closeModal('settingsModal')">Cancel</button>
+                <button class="modal-btn primary-btn" onclick="saveSettings()">Save Configuration</button>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>Best Budget Travel Tips</h3>
-        <p>Save money while travelling with these simple and effective tips.</p>
+    <!-- Modal 2: New Chat Setup Context options -->
+    <div class="modal-overlay" id="newChatModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Configure New Chat Persona</h3>
+                <button class="close-modal-btn" onclick="closeModal('newChatModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Choose a workflow architecture to initialize your dynamic workspace environment:</p>
+                <div class="persona-grid">
+                    <div class="persona-card" onclick="initiateChatMode('General Purpose Assistant')">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <div><strong>General Creative</strong><p>Standard task automation</p></div>
+                    </div>
+                    <div class="persona-card" onclick="initiateChatMode('Technical Code Reviewer')">
+                        <i class="fa-solid fa-code"></i>
+                        <div><strong>Software Engine</strong><p>Debugging & API design</p></div>
+                    </div>
+                    <div class="persona-card" onclick="initiateChatMode('Data Analyst Matrix')">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <div><strong>Data Analytics</strong><p>Parse tables & generate charts</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>How to Start Online Income</h3>
-        <p>Beginner-friendly ideas to start earning money online.</p>
-    </div>
-
-</div>
-
-<!-- Footer -->
-<footer>
-    <p>© 2026 InfoDrip.in | All Rights Reserved</p>
-</footer>
-
+    <script src="app.js"></script>
 </body>
 </html>
